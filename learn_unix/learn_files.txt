@@ -1,0 +1,12 @@
+tar cvf [filename.ext] current_file ***CREATES TARBALL OF FILE 
+tar xvf [filename.ext] ***EXTRACTS TARBALL OF FILE
+
+
+ssh ethanmay@onyx.boisestate.edu ***opens new shell on machine and displays
+scp -r ethanmay@onyx.boisestate.edu:~/CS221/HW01 . ***secure shell for copy
+
+vim HelloWorld.java ***opens in-terminal text editor, supported by onyx
+:qw ***finishes editing and saves file
+:q! ***closes without saving
+
+
