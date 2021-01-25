@@ -1,5 +1,7 @@
 package cs221.warmup;
 
+import java.io.FileNotFoundException;
+
 /**
  * Interface required for a class that can read in a two-dimensional array of
  * doubles (the base grid) and determine locations in the base grid with
@@ -15,7 +17,7 @@ public interface GridMonitorInterface {
 	 * 
 	 * @return base grid
 	 */
-	public double[][] getBaseGrid();
+	public double[][] getBaseGrid() throws FileNotFoundException;
 
 	/**
 	 * Returns a grid with the same dimensions as the base grid, but each element is
@@ -25,7 +27,7 @@ public interface GridMonitorInterface {
 	 * 
 	 * @return grid containing the sum of adjacent positions
 	 */
-	public double[][] getSurroundingSumGrid();
+	public double[][] getSurroundingSumGrid() throws FileNotFoundException;
 
 	/**
 	 * Returns a grid with the same dimensions as the base grid, but each element is
@@ -34,7 +36,7 @@ public interface GridMonitorInterface {
 	 * 
 	 * @return grid containing the average of adjacent positions
 	 */
-	public double[][] getSurroundingAvgGrid();
+	public double[][] getSurroundingAvgGrid() throws FileNotFoundException;
 
 	/**
 	 * Returns a grid with the same dimensions as the base grid, but each element is
@@ -45,7 +47,7 @@ public interface GridMonitorInterface {
 	 * 
 	 * @return grid containing the maximum delta from average of adjacent positions
 	 */
-	public double[][] getDeltaGrid();
+	public double[][] getDeltaGrid() throws FileNotFoundException;
 
 	/**
 	 * Returns a grid with the same dimensions as the base grid, but each element is
@@ -59,5 +61,5 @@ public interface GridMonitorInterface {
 	 * @return grid containing boolean values indicating whether the cell at this
 	 *         location is in danger of exploding
 	 */
-	public boolean[][] getDangerGrid();
+	public boolean[][] getDangerGrid() throws FileNotFoundException;
 }

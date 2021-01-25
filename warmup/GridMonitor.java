@@ -8,15 +8,15 @@ public class GridMonitor implements GridMonitorInterface {
 
     double[][] tempGrid;
     double data = 0.0;
+    File currentFile;
 
+    @SuppressWarnings("unused")
     public GridMonitor(String filename) throws FileNotFoundException {
         File currentFile = new File(filename);
-        buildGrid(currentFile);
     }
 
-    public double[][] buildGrid(File currentFile) throws FileNotFoundException {
+    public double[][] getBaseGrid() throws FileNotFoundException {
         Scanner fileCursor = new Scanner(currentFile);
-
         for (int i = 0; fileCursor.hasNextLine(); i++) {
             for (int j = 0; fileCursor.hasNextDouble(); j++) {
                 data = fileCursor.nextDouble();
@@ -28,23 +28,46 @@ public class GridMonitor implements GridMonitorInterface {
         return tempGrid;
     }
 
-    public double[][] getSurroundingSumGrid() {
-        return null;
+    public double[][] getSurroundingSumGrid() throws FileNotFoundException {
+        Scanner fileCursor = new Scanner(currentFile);
+        for (int i = 0; fileCursor.hasNextLine(); i++) {
+            for (int j = 0; fileCursor.hasNextDouble(); j++) {
+                data = fileCursor.nextDouble();
+                tempGrid[i][j] = data;
+            }
+        }
+
+        fileCursor.close();
+        return tempGrid;
     }
 
-    public double[][] getSurroundingAvgGrid() {
-        return null;
+    public double[][] getSurroundingAvgGrid() throws FileNotFoundException {
+        Scanner fileCursor = new Scanner(currentFile);
+        for (int i = 0; fileCursor.hasNextLine(); i++) {
+            for (int j = 0; fileCursor.hasNextDouble(); j++) {
+                data = fileCursor.nextDouble();
+                tempGrid[i][j] = data;
+            }
+        }
+
+        fileCursor.close();
+        return tempGrid;
     }
 
-    public double[][] getDeltaGrid() {
-        return null;
+    public double[][] getDeltaGrid() throws FileNotFoundException {
+        Scanner fileCursor = new Scanner(currentFile);
+        for (int i = 0; fileCursor.hasNextLine(); i++) {
+            for (int j = 0; fileCursor.hasNextDouble(); j++) {
+                data = fileCursor.nextDouble();
+                tempGrid[i][j] = data;
+            }
+        }
+
+        fileCursor.close();
+        return tempGrid;
     }
 
-    public boolean[][] getDangerGrid() {
-        return null;
-    }
-
-    public double[][] getBaseGrid() {
+    public boolean[][] getDangerGrid() throws FileNotFoundException {
         return null;
     }
 }
