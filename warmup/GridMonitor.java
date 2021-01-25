@@ -9,6 +9,9 @@ public class GridMonitor implements GridMonitorInterface {
     double[][] tempGrid;
     double data = 0.0;
     File currentFile;
+    double[][] surroundingSumGrid;
+    double[][] surroundingAvgGrid;
+    double sum = 0;
 
     @SuppressWarnings("unused")
     public GridMonitor(String filename) throws FileNotFoundException {
@@ -16,54 +19,94 @@ public class GridMonitor implements GridMonitorInterface {
     }
 
     public double[][] getBaseGrid() throws FileNotFoundException {
-        Scanner fileCursor = new Scanner(currentFile);
-        for (int i = 0; fileCursor.hasNextLine(); i++) {
-            for (int j = 0; fileCursor.hasNextDouble(); j++) {
-                data = fileCursor.nextDouble();
+        Scanner fileCursor0 = new Scanner(currentFile);
+        for (int i = 0; fileCursor0.hasNextLine(); i++) {
+            for (int j = 0; fileCursor0.hasNextDouble(); j++) {
+                data = fileCursor0.nextDouble();
                 tempGrid[i][j] = data;
             }
         }
 
-        fileCursor.close();
+        fileCursor0.close();
         return tempGrid;
     }
 
     public double[][] getSurroundingSumGrid() throws FileNotFoundException {
-        Scanner fileCursor = new Scanner(currentFile);
-        for (int i = 0; fileCursor.hasNextLine(); i++) {
-            for (int j = 0; fileCursor.hasNextDouble(); j++) {
-                data = fileCursor.nextDouble();
-                tempGrid[i][j] = data;
+        Scanner fileCursor1 = new Scanner(currentFile);
+
+        for (int i = 0; fileCursor1.hasNextLine(); i++) {
+            for (int j = 0; fileCursor1.hasNextDouble(); j++) {
+                try {
+                    sum += tempGrid[i++][j];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                try {
+                    sum += tempGrid[i][j++];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                try {
+                    sum += tempGrid[i--][j];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                try {
+                    sum += tempGrid[i][j--];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                surroundingSumGrid[i][j] = sum;
             }
         }
 
-        fileCursor.close();
-        return tempGrid;
+        fileCursor1.close();
+        return surroundingSumGrid;
     }
 
     public double[][] getSurroundingAvgGrid() throws FileNotFoundException {
-        Scanner fileCursor = new Scanner(currentFile);
-        for (int i = 0; fileCursor.hasNextLine(); i++) {
-            for (int j = 0; fileCursor.hasNextDouble(); j++) {
-                data = fileCursor.nextDouble();
-                tempGrid[i][j] = data;
+        Scanner fileCursor2 = new Scanner(currentFile);
+
+        for (int i = 0; fileCursor2.hasNextLine(); i++) {
+            for (int j = 0; fileCursor2.hasNextDouble(); j++) {
+                try {
+                    sum += tempGrid[i++][j];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                try {
+                    sum += tempGrid[i][j++];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                try {
+                    sum += tempGrid[i--][j];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                try {
+                    sum += tempGrid[i][j--];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    sum += tempGrid[i][j];
+                }
+                surroundingAvgGrid[i][j] = sum / 4;
             }
         }
 
-        fileCursor.close();
-        return tempGrid;
+        fileCursor2.close();
+        return surroundingAvgGrid;
     }
 
     public double[][] getDeltaGrid() throws FileNotFoundException {
-        Scanner fileCursor = new Scanner(currentFile);
-        for (int i = 0; fileCursor.hasNextLine(); i++) {
-            for (int j = 0; fileCursor.hasNextDouble(); j++) {
-                data = fileCursor.nextDouble();
+        Scanner fileCursor3 = new Scanner(currentFile);
+        for (int i = 0; fileCursor3.hasNextLine(); i++) {
+            for (int j = 0; fileCursor3.hasNextDouble(); j++) {
+                data = fileCursor3.nextDouble();
                 tempGrid[i][j] = data;
             }
         }
 
-        fileCursor.close();
+        fileCursor3.close();
         return tempGrid;
     }
 
