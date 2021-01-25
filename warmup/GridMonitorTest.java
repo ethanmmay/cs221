@@ -1,5 +1,6 @@
 package cs221.warmup;
 
+import cs221.warmup.GridMonitor;
 import java.io.FileNotFoundException;
 
 /**
@@ -93,7 +94,7 @@ public class GridMonitorTest {
 			GridMonitor grid = null;
 			// if GridMonitor does not implement GridMonitorInterface, the following
 			// invalid assignment will prevent the test class from even compiling
-			GridMonitorInterface gridInterface = (GridMonitorInterface) grid;
+			GridMonitorInterface gridInterface = grid;
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			success = false;

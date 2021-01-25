@@ -1,5 +1,7 @@
 package cs221.warmup;
 
+import cs221.warmup.GridMonitor;
+
 /**
  * Interface required for a class that can read in a two-dimensional array of
  * doubles (the base grid) and determine locations in the base grid with
