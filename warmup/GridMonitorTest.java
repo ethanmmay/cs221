@@ -1,6 +1,5 @@
 package cs221.warmup;
 
-import cs221.warmup.GridMonitor;
 import java.io.FileNotFoundException;
 
 /**

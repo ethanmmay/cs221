@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class GridMonitor {
+public class GridMonitor implements GridMonitorInterface {
 
     double[][] tempGrid;
     double data = 0.0;
